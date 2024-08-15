@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Memes</title>
+    <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="#">CREADOR DE MEMES</a>
+        </h1>
+    </header>
+    <!-- el id todo brinda el css para esta caja -->
+    <section class="row container-fluid" id="todo">
+        <aside id="lateral" class="col-sm-3">
+            <select id="temas"> 
+                <option value="0" selected>Seleccione categoría...</option>
+                <option value="bola">Bola Amarilla</option>
+                <option value="calacas">Calacas chidas</option>
+                <option value="aleatorio">Aleatorio</option>
+            </select>
+        </aside>
+
+        <section id="principal" class="col-sm-9">
+            <article id="bola" class="contenedor" style="display: none;">
+                <div class="plantilla_memes">
+                    <h2>Elige una plantilla:</h2>
+                    <div class="plantillas">
+                        <img src="img/bola_amarilla5.jpg" alt="Plantilla 1" class="fotografias" onclick="selectTemplate('img/bola_amarilla5.jpg')">
+                        <img src="img/bola_amarilla2.jpg" alt="Plantilla 2" class="fotografias" onclick="selectTemplate('img/bola_amarilla2.jpg')">
+                        <img src="img/bola_amarilla3.jpg" alt="Plantilla 3" class="fotografias" onclick="selectTemplate('img/bola_amarilla3.jpg')">
+                    </div>
+                </div>
+        
+                <div class="card-form">
+                    <label for="cardText">Texto del meme:</label>
+                    <input type="text" id="cardText" placeholder="Escribe tu meme aquí..."><br>
+
+                    <label for="bordeTexto">Color de borde:</label>
+                    <select name="" id="bordeTexto">
+                        <option value="0" selected>Color de borde...</option>
+                        <option value="#FFD369" style="background-color: #FFD369;"></option>
+                        <option value="#393E46" style="background-color: #393E46;"></option>
+                        <option value="#222831" style="background-color: #222831;"></option>
+                    </select>
+
+                    <label for="fuenteTexto">Tipografía:</label>
+                    <select name="" id="fuenteTexto">
+                        <option value="0" selected>tipografía...</option>
+                        <option value="Radio Canada" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Radio Canada</option>
+                        <option value="Hind Guntur" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Hind Guntur</option>
+                        <option value="Elegante Classica" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Elegante Classica</option>
+                    </select>
+
+                    <label for="colorTexto">Color de texto:</label>
+                    <select name="" id="colorTexto">
+                        <option value="0" selected>Color de texto...</option>
+                        <option value="#fff" style="color: #fff; background-color: rgb(14, 14, 14);">Blanco</option>
+                        <option value="#000" style="color: #000; background-color: blanchedalmond;">Negro</option>
+                    </select>
+                    <br>
+                    <button onclick="generateCard()">Hazlo!</button>
+                </div>
+        
+                <div class="card-preview">
+                    <h2>Resultado!</h2>
+                    <div id="cardOutput" class="card">
+                        <!-- La tarjeta generada se mostrará aquí -->
+                    </div>
+                </div>
+            </article>
+            
+<!--calacas-->
+            <article id="calacas" class="contenedor" style="display: none;">
+                <div class="plantilla_memes">
+                    <h2>Elige una plantilla:</h2>
+                    <div class="plantillas">
+                        <img src="img/calaca1.jpg" alt="Plantilla 1" class="fotografias" onclick="selectTemplate('img/calaca1.jpg')">
+                        <img src="img/calaca2.jpg" alt="Plantilla 2" class="fotografias" onclick="selectTemplate('img/calaca2.jpg')">
+                        <img src="img/calaca3.jpg" alt="Plantilla 3" class="fotografias" onclick="selectTemplate('img/calaca3.jpg')">
+                        <img src="img/calaca4.jpg" alt="Plantilla 4" class="fotografias" onclick="selectTemplate('img/calaca4.jpg')">
+                    </div>
+                </div>
+        
+                <div class="card-form">
+                    <label for="cardText">Texto del meme:</label>
+                    <input type="text" id="cardText" placeholder="Escribe tu meme aquí..."><br>
+
+                    <label for="bordeTexto">Color de borde:</label>
+                    <select name="" id="bordeTexto">
+                        <option value="0" selected>Color de borde...</option>
+                        <option value="#9B3922" style="background-color: #9B3922;"></option>
+                        <option value="#F2613F" style="background-color: #F2613F;"></option>
+                        <option value="#481E14" style="background-color: #481E14;"></option>
+                    </select>
+
+                    <label for="tipografia">Tipografía:</label>
+                    <select name="tipografia" id="fuenteTexto">
+                        <option value="0" selected>tipografía...</option>
+                        <option value="Radio Canada" style="font-family: Radio;">Radio Canada</option>
+                        <option value="Hind Guntur" style="font-family: Hindu;">Hind Guntur</option>
+                        <option value="Elegante Classica" style="font-family: Elegante;">Elegante Classica</option>
+                    </select>
+
+                    <label for="colorTexto">Color de texto:</label>
+                    <select name="" id="colorTexto">
+                        <option value="0" selected>Color de texto...</option>
+                        <option value="#fff" style="color: #fff; background-color: rgb(14, 14, 14);">Blanco</option>
+                        <option value="#000" style="color: #000; background-color: blanchedalmond;">Negro</option>
+                    </select>
+                    <br>
+                    <button onclick="generateCard()">Hazlo!</button>
+                </div>
+        
+                <div class="card-preview">
+                    <h2>Resultado!</h2>
+                    <div id="cardOutputxd" class="card">
+                        <!-- La tarjeta generada se mostrará aquí -->
+                    </div>
+                </div>
+            </article>
+
+<!--aleatorio-->
+            <article id="aleatorio" class="contenedor" style="display: none;">
+                <div class="plantilla_memes">
+                    <h2>Elige una plantilla:</h2>
+                    <div class="plantillas">
+                        <img src="img/mono.jpg" alt="Plantilla 1" class="fotografias" onclick="selectTemplate('img/mono.jpg')">
+                        <img src="img/perro_elegante.jpg" alt="Plantilla 2" class="fotografias" onclick="selectTemplate('img/perro_elegante.jpg')">
+                        <img src="img/oruga.jpg" alt="Plantilla 3" class="fotografias" onclick="selectTemplate('img/oruga.jpg')">
+                    </div>
+                </div>
+        
+                <div class="card-form">
+                    <label for="cardText">Texto del meme:</label>
+                    <input type="text" id="cardText" placeholder="Escribe tu meme aquí..."><br>
+
+                    <label for="bordeTexto">Color de borde:</label>
+                    <select name="" id="bordeTexto">
+                        <option value="0" selected>Color de borde...</option>
+                        <option value="#ABC4AA" style="background-color: #ABC4AA;"></option>
+                        <option value="#F3DEBA" style="background-color: #F3DEBA;"></option>
+                        <option value="#A9907E" style="background-color: #A9907E;"></option>
+                    </select>
+
+                    <label for="tipografia">Tipografía:</label>
+                    <select name="tipografia" id="fuenteTexto">
+                        <option value="0" selected>tipografía...</option>
+                        <option value="Radio Canada" style="font-family: Radio;">Radio Canada</option>
+                        <option value="Hind Guntur" style="font-family: Hindu;">Hind Guntur</option>
+                        <option value="Elegante Classica" style="font-family: Elegante;">Elegante Classica</option>
+                    </select>
+
+                    <label for="colorTexto">Color de texto:</label>
+                    <select name="" id="colorTexto">
+                        <option value="0" selected>Color de texto...</option>
+                        <option value="#fff" style="color: #fff; background-color: rgb(14, 14, 14);">Blanco</option>
+                        <option value="#000" style="color: #000; background-color: blanchedalmond;">Negro</option>
+                    </select>
+                    <br>
+                    <button onclick="generateCard()">Hazlo!</button>
+                </div>
+        
+                <div class="card-preview">
+                    <h2>Resultado!</h2>
+                    <div id="cardOutputAle" class="card">
+                        <!-- La tarjeta generada se mostrará aquí -->
+                    </div>
+                </div>
+            </article>
+        </section>
+    </section>
+    <footer>
+        <h6>Created by @Ileana Cardiel </h6>  
+        <h6>© Todos los derechos reservados</h6>  
+    </footer>
+    <script src="funciones.js"></script>
+</body>
+</html>
+
